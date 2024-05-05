@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(){
+	
+    char palavra[20]; 
+	char espaco[20]="-"; 
+	char tamanho;
+	char letra[20]; 
+    int chances=6; 
+	int i; 
+	int acertos=0; 
+
+    printf("--------------BEM VINDO AO JOGO DA FORCA----------------------\n"
+				"Tecle 'v' para continuar...");
+	
+	while(getchar() != 'v'){
+    }
+	system("cls");
+            
+	printf("Digite a palavra secreta: ");
+    scanf("%s",&palavra);
+    system("cls");
+
+    for(i=0; i<strlen(palavra); i++){
+        espaco[i] = '-';
+        tamanho = strlen(palavra);
+	}
+             
+	while(chances>0){
+        printf("\n\tVoce possui %i chances",chances);
+                   
+		if(chances<0){
+            system("cls");
+            printf("\nSuas chances acabaram");
+        }
+
+        printf("\n%s\n",espaco);
+        printf("Digite uma letra: ");
+        scanf("%s",&letra);
+
+    	if(chances==6 || chances==5 || chances==4 || chances==3 || chances==2 || chances==1){
+            chances--;
+	    } 
+    
+        for(i=0; i<strlen(palavra); i++){
+            if(letra[0]==palavra[i]){
+                espaco[i] = palavra[i];
+                acertos++;
+            }
+        }
+        
+        if(acertos==tamanho){
+            printf("\nPARABENS VOCE ACERTOU A PALAVRA. VOCE VENCEU A PARTIDA!!!\n");
+            printf("\nA palavra era: %s\n",palavra);
+            break;
+        }
+        system("cls");
+    }
+
+   return 0;
+}
